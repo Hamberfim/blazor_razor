@@ -1,5 +1,41 @@
-﻿<h3>Todo</h3>
+﻿@page "/todo"
+
+<div class="container">
+    <div class="card">
+
+        <h3 class="card-header bg-info text-white">Todo Items: </h3>
+        <div class="card-body">
+
+            <input class="my-2" placeholder="Add a todo" @bind="newTodo" />
+            <button class="btn btn-info my-2" @onclick="AddTodo">Add todo</button>
+            <div class="my-2">
+                <!-- spcaer -->
+            </div>
+            <ul style="list-style-type: none;">
+                @foreach (var todo in todos)
+                {
+                <li>
+                    <input class="m-1" type="checkbox" @bind="todo.IsDone" />
+                    <input class="m-1" @bind="todo.Title" />
+                </li>
+                }
+            </ul>
+        </div>
+        <div class="card-footer text-muted">
+            <p class="m-0">@todos.Count(todo => todo.IsDone) completed.</p>
+            <p class="m-0">@todos.Count(todo => !todo.IsDone) left to do.</p>
+        </div>
+    </div>
+</div>
 
 @code {
-
+    private List<TodoItem> todos = new();
+    private string newTodo;
+    
+    private void AddTodo() {
+        if(!string.IsNullOrWhiteSpace(newTodo)) {
+            todos.Add(new TodoItem {Title = newTodo});
+            newTodo = string.Empty;
+        }
+    }
 }

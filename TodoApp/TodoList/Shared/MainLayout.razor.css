@@ -9,7 +9,7 @@
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, #1b6975 0%,  #17a2b8 70%);
 }
 
 .top-row {
@@ -30,6 +30,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
 
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
